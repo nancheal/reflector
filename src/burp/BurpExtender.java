@@ -282,7 +282,7 @@ public class BurpExtender implements IBurpExtender, IScannerCheck, ITab
     }
 
     @Override
-    public List<IScanIssue> doPassiveScan(IHttpRequestResponse baseRequestResponse) throws RuntimeException {
+    public List<IScanIssue> doActiveScan(IHttpRequestResponse baseRequestResponse, IScannerInsertionPoint insertionPoint) {
         if ( this.settings.getScopeOnly() && !callbacks.isInScope(helpers.analyzeRequest(baseRequestResponse).getUrl()) )
             return null;
         // check content type
@@ -389,7 +389,7 @@ public class BurpExtender implements IBurpExtender, IScannerCheck, ITab
     }
 
     @Override
-    public List<IScanIssue> doActiveScan(IHttpRequestResponse baseRequestResponse, IScannerInsertionPoint insertionPoint)
+    public List<IScanIssue> doPassiveScan(IHttpRequestResponse baseRequestResponse) throws RuntimeException
     {
         return null;
     }
